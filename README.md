@@ -1,73 +1,125 @@
-# React + TypeScript + Vite
+# Course Registration Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React TypeScript controlled component application for course registration with form validation.
 
-Currently, two official plugins are available:
+## 🎓 Key Learnings
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. **useState for Form State Management**
 
-## React Compiler
+Learned how to manage multiple form inputs using React's `useState` hook.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. **Form Validation Patterns**
 
-## Expanding the ESLint configuration
+Learned how to implemented comprehensive validation logic including regex patterns for email validation, numeric range checks, and conditional error handling.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. **Event Handling in React**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Mastered React event handlers including `onChange` for real-time updates, `onSubmit` for form submission with `preventDefault()`, and managing error state clearing based on user interactions.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📸 Screenshots
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Registration Form
+
+![Registration Form](./src/assets/form-default.png)
+Default Form
+
+### Validation Errors
+
+![Validation Errors](./src/assets/form-email.png)
+
+![Validation Errors](./src/assets/form-empty.png)
+
+### Success Message
+
+![Success Message](./src/assets/form-success.png)
+
+## 🚀 Features
+
+-   **Form Fields**: First Name, Last Name, Email, Age, and Course Selection
+-   **Real-time Validation**: Input validation with error messages
+-   **Success Feedback**: Confirmation message on successful registration
+-   **Responsive Design**: Modern UI with gradient styling
+-   **TypeScript**: Type-safe form handling
+
+## 🎨 Styling
+
+The project uses vanilla CSS with:
+
+-   Gradient backgrounds
+-   Responsive grid layouts
+-   Form input states (focus, error)
+-   Smooth transitions and hover effects
+
+## 📝 Usage
+
+1. Fill in all required fields
+2. Errors will display on form submission if validation fails
+3. Success message appears when all validations pass
+4. Form auto-clears after 5 seconds on success
+
+## 🧪 Testing the Application
+
+### 📋 Prerequisites
+
+-   Node.js (v20 or higher)
+-   npm or yarn
+
+### Clone and Run
+
+```bash
+# Clone the repository
+git clone https://github.com/StivinTaesoo/course-registration-form
+
+# Navigate to project directory
+cd course-registration-form
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will open at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Test Cases to Try
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Valid Submission:**
+
+-   First Name: `Tersoo`
+-   Last Name: `Steve`
+-   Email: `steve123@example.com`
+-   Age: `25`
+-   Course: Select any course
+-   Click "Register for Course" ✅
+
+**Test Validation Errors:**
+
+-   Leave fields empty and submit
+-   Enter age less than 18 (e.g., `17`)
+-   Enter invalid email (e.g., `invalid-email`)
+-   Enter names with less than 2 characters
+-   Try submitting without selecting a course
+
+**Test Real-time Error Clearing:**
+
+-   Submit form with errors
+-   Start typing in any field with an error
+-   Notice the error message disappears as you type
+
+## 🔧 Technologies Used
+
+-   React 18
+-   TypeScript
+-   Vite
+-   CSS3
+
+## 📄 License
+
+MIT
+
+---
+
+Copyright &copy; Stephen Tersoo @ eHA Academy 2025
+
+Built with ❤️ using React and TypeScript

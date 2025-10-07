@@ -112,7 +112,7 @@ function RegistrationForm() {
                     course: "",
                 });
                 setIsSubmitted(false);
-            }, 3000);
+            }, 5000);
         }
     };
 
@@ -120,33 +120,6 @@ function RegistrationForm() {
         <form onSubmit={handleSubmit} className="form-wrapper">
             <div className="registration-form">
                 <h2 className="form-title">Course Registration</h2>
-
-                {isSubmitted && (
-                    <div className="success-message">
-                        <svg
-                            className="success-icon"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                            />
-                        </svg>
-                        <div>
-                            <strong className="success-title">
-                                Registration Successful!
-                            </strong>
-                            <p className="success-text">
-                                Welcome {formData.firstName} {formData.lastName}
-                                ! Check your email for course details.
-                            </p>
-                        </div>
-                    </div>
-                )}
 
                 <div className="form-row">
                     <div className="form-group">
@@ -263,6 +236,32 @@ function RegistrationForm() {
                 <p className="form-note">
                     <span className="required">*</span> Required fields
                 </p>
+                {isSubmitted && (
+                    <div className="success-message">
+                        <svg
+                            className="success-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                            />
+                        </svg>
+                        <div>
+                            <strong className="success-title">
+                                Registration Successful!
+                            </strong>
+                            <p className="success-text">
+                                Welcome {formData.firstName} {formData.lastName}
+                                ! Check your email for course details.
+                            </p>
+                        </div>
+                    </div>
+                )}
             </div>
         </form>
     );
