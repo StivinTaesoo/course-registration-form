@@ -29,6 +29,93 @@ function RegistrationForm() {
 
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const validateEmail = (email: string): boolean => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    };
+
+    const validateForm = (): boolean => {
+        const newErrors: FormErrors = {};
+
+        if (!formData.firstName.trim()) {
+            newErrors.firstName = "First name is required";
+        } else if (formData.firstName.trim().length < 2) {
+            newErrors.firstName = "First name must be at least 2 characters";
+        }
+
+        if (!formData.lastName.trim()) {
+            newErrors.lastName = "Last name is required";
+        } else if (formData.lastName.trim().length < 2) {
+            newErrors.lastName = "Last name must be at least 2 characters";
+        }
+
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!validateEmail(formData.email)) {
+            newErrors.email = "Please enter a valid email address";
+        }
+
+        if (!formData.age) {
+            newErrors.age = "Age is required";
+        } else {
+            const ageNum = parseInt(formData.age);
+            if (isNaN(ageNum)) {
+                newErrors.age = "Please enter a valid age";
+            } else if (ageNum < 18) {
+                newErrors.age = "You must be at least 18 years old to register";
+            } else if (ageNum > 120) {
+                newErrors.age = "Please enter a valid age";
+            }
+        }
+
+        if (!formData.course) {
+            newErrors.course = "Please select a course";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+
+        if (errors[name as keyof FormErrors]) {
+            setErrors((prev) => ({
+                ...prev,
+                [name]: undefined,
+            }));
+        }
+
+        if (isSubmitted) {
+            setIsSubmitted(false);
+        }
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (validateForm()) {
+            setIsSubmitted(true);
+            setTimeout(() => {
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    age: "",
+                    course: "",
+                });
+                setIsSubmitted(false);
+            }, 3000);
+        }
+    };
+
     return (
         <form onSubmit={handleSubmit} className="form-wrapper">
             <div className="registration-form">
@@ -169,7 +256,7 @@ function RegistrationForm() {
                     )}
                 </div>
 
-                <button className="submit-button" type="button">
+                <button className="submit-button" type="submit">
                     Register for Course
                 </button>
 
