@@ -1,22 +1,7 @@
 import { useState } from "react";
-import "./App.css";
-import { courses } from "./data";
-
-interface FormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    age: string;
-    course: string;
-}
-
-interface FormErrors {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    age?: string;
-    course?: string;
-}
+import "../App.css";
+import { courses } from "../data";
+import type { FormData, FormErrors } from "../types";
 
 function RegistrationForm() {
     const [formData, setFormData] = useState<FormData>({
@@ -177,7 +162,7 @@ function RegistrationForm() {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="your.email@example.com"
+                        placeholder="email02@example.com"
                         className={`form-input ${errors.email ? "error" : ""}`}
                     />
                     {errors.email && (
@@ -218,7 +203,7 @@ function RegistrationForm() {
                             errors.course ? "error" : ""
                         }`}
                     >
-                        {courses.map((course) => (
+                        {courses.map((course: any) => (
                             <option key={course.value} value={course.value}>
                                 {course.label}
                             </option>
