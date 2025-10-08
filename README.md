@@ -10,7 +10,7 @@ Learned how to manage multiple form inputs using React's `useState` hook.
 
 ### 2. **Form Validation Patterns**
 
-Learned how to implemented comprehensive validation logic including regex patterns for email validation, numeric range checks, and conditional error handling.
+Learned how to implement comprehensive validation logic including regex patterns for email validation, numeric range checks, and conditional error handling.
 
 ### 3. **Event Handling in React**
 
